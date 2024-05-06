@@ -13,3 +13,4 @@ To compile the project you can run:
 `make all` or `make`
 
 To start ATAK, run: `make run`
+
