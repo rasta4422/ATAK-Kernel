@@ -14,8 +14,7 @@ I plan to make this a fully functioning shell completly written in C, for the pu
     4. qemu (with x86 support)
 
 # Compilation
-
-
+## Shell
 To compile the shell you can run:
 ```
 make shell
@@ -25,8 +24,9 @@ To start ATAK, run:
 ```
 make ATAK
 ```
-
+## Kernel
 NOTE: The kernel is still in development so it does not work yet.
+
 To compile the entire project (kernel and shell):
 ```
 make all
