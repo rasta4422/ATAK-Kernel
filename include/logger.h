@@ -1,7 +1,9 @@
 #ifndef LOGGER_H
 #define LOGGER_H
 
-#include "ataksh.h"
+#include <stdlib.h>
+#include <stdio.h>
+#include <errno.h>
 #include <time.h>
 
 /* Define gloabl variables indicating how big the log 

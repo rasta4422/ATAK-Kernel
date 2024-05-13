@@ -20,7 +20,7 @@ char *ataksh_get_hostname()
 
 char **ataksh_parse_char()
 {
-    char *tmp_cmd = malloc(CMDSZ*sizeof(char));
+    char *tmp_cmd = (char *)malloc(CMDSZ*sizeof(char));
     memset(tmp_cmd, 0, CMDSZ*sizeof(char));
     if (tmp_cmd == NULL)
     {
@@ -148,7 +148,6 @@ int ataksh_proc(){
     }
     return SUCCESS;
 }
-
 int main(void){
     /* TODO: configs, history, tab completion, etc. */
 
@@ -157,4 +156,3 @@ int main(void){
 
     return SUCCESS;
 }
-

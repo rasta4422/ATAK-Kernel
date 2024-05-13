@@ -1,3 +1,11 @@
 # Object files
 *.o
 
+# ISO files
+*.iso
+
+# Executable binaries
+**/atak_kernel
+
+# QEMU hard disk image
+**/atak_img

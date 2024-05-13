@@ -1,5 +1,5 @@
-#ifndef ATAKSH_h
-#define ATAKSH_h
+#ifndef ATAKSH_H
+#define ATAKSH_H
 
 #include <stdio.h>
 #include <sys/wait.h>
