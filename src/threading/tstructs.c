@@ -2,7 +2,7 @@
 
 void swap(int i1, int i2, sp_queue *q)
 {
-	TCB *tmp = q->heap[i2];
+    TCB *tmp = q->heap[i2];
     q->heap[i2] = q->heap[i1];
     q->heap[i1] = tmp;
 }
@@ -72,15 +72,15 @@ TCB *dequeue_id(sp_queue *q, int id)
     } 
     else
     {
-		int i;
-		// find id index in heap
-		for (i=0; i<q->size;i++)
+        int i;
+        // find id index in heap
+        for (i=0; i<q->size;i++)
         {
-			if (q->heap[i]->id_ == id)
-				break;
-		}
+            if (q->heap[i]->id_ == id)
+                break;
+        }
         swap(i, --q->size, q);
-		heapify(q,0);
+        heapify(q,0);
         return q->heap[q->size];
     }
 }
@@ -93,7 +93,7 @@ void change_priority(sp_queue *q, TCB *t)
         if (q->heap[i]->priority_ > 1)
             q->heap[i]->priority_--;
     }
-    
+
     if (t->priority_ < 10)
         t->priority_++;
 
@@ -104,45 +104,45 @@ void change_priority(sp_queue *q, TCB *t)
 
 void enqueue_join(struct join_queue *j, TCB *t, int tid_w)
 {
-	struct join_queue *curr = j;
-	if (curr == NULL)
+    struct join_queue *curr = j;
+    if (curr == NULL)
     {
-		curr = (struct join_queue *)malloc(sizeof(join_queue));
-		curr->th = t;
-		curr->wait_on = tid_w;
-		curr->next = NULL;
-		j = curr;
-	}
+        curr = (struct join_queue *)malloc(sizeof(join_queue));
+        curr->th = t;
+        curr->wait_on = tid_w;
+        curr->next = NULL;
+        j = curr;
+    }
     else
     {
-		while(curr->next != NULL)
+        while(curr->next != NULL)
         {
-			curr = curr->next;
-		}
-		curr->next = (struct join_queue *)malloc(sizeof(join_queue));
-		curr = curr->next;
-		curr->th = t;
-		curr->wait_on = tid_w;
-		curr->next = NULL;
-	}
+            curr = curr->next;
+        }
+        curr->next = (struct join_queue *)malloc(sizeof(join_queue));
+        curr = curr->next;
+        curr->th = t;
+        curr->wait_on = tid_w;
+        curr->next = NULL;
+    }
 }
 
 void enqueue_fin(fin_queue *q, TCB *t)
 {
-	q->array[q->rear] = t;
-	q->rear = (q->rear + 1) % MAX_THREADS;
-	q->size++;
+    q->array[q->rear] = t;
+    q->rear = (q->rear + 1) % MAX_THREADS;
+    q->size++;
 }
 
 
 void enqueue_block(struct block_queue *b, TCB *t)
 {
-	struct block_queue *curr = b;
-	if (curr == NULL)
+    struct block_queue *curr = b;
+    if (curr == NULL)
     {
         curr = (struct block_queue *)malloc(sizeof(block_queue));
         curr->th = t;
-		curr->next = NULL;
+        curr->next = NULL;
         b = curr;
     }
     else
@@ -154,24 +154,24 @@ void enqueue_block(struct block_queue *b, TCB *t)
         curr->next = (struct block_queue *)malloc(sizeof(block_queue));
         curr = curr->next;
         curr->th = t;
-		curr->next = NULL;
+        curr->next = NULL;
     }
 }
 
 void dequeue_block(struct block_queue *b, int id)
 {
-	struct block_queue *curr = b;
-	struct block_queue *prev = NULL;
-   	
-	while (curr != NULL)
+    struct block_queue *curr = b;
+    struct block_queue *prev = NULL;
+
+    while (curr != NULL)
     {
-		if (curr->th->id_ == id)
+        if (curr->th->id_ == id)
         {
             if (prev == NULL)
                 b = curr->next;
             else 
                 prev->next = curr->next;
-            
+
             return;
         }
         prev = curr;
