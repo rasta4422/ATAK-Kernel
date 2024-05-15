@@ -8,9 +8,13 @@ Currently, only executable commands found in `/usr/bin` can be executed, assumin
 I plan to make this a fully functioning shell completly written in C, for the purpose of learning. In which I hope to include the use of tab completion, history regex, more commands (e.g `cd`, `fg`, `&` etc), user login/logout, separating ATAK from the current shell it runs on top of (i.e. bash/zsh), and much more!
 
 # Compilation
-To compile the project you can run:
+To compile the project:
+```
+make all
+```
 
-`make all` or `make`
-
-To start ATAK, run: `make run`
+To start the ATAK shell:
+```
+make run
+```
 
