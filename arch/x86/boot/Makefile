@@ -14,10 +14,10 @@ STRIPFLAGS 	:=	-s -K mmio -K fb -K bootboot -K environment -K initstack
 TARGET		:= 	bootx86
 
 OBJS=\
-strlen.o \
-tty.o	\
-atak.o	\
-$(TARGET).o \
+	 strlen.o \
+	 tty.o	\
+	 atak.o	\
+	 $(TARGET).o \
 
 all: grub.iso
 
