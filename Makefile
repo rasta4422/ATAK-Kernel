@@ -1,22 +1,18 @@
-CXX:=gcc
-CFLAGS:=-g -Wall
+OVMF        :=  /usr/share/qemu/bios-TianoCoreEFI.bin
 
-INCDIR:=include
-LOGDIR:=log
+ARCHDIR		:= arch/x86
+BOOTDIR		:= $(ARCHDIR)/boot
 
-CFILES:=lib
-OFILES:=obj
+export PATH := $(HOME)/opt/cross/bin:$(PATH)
 
-all: $(OFILES)/ataksh
+all: qemu
 
-$(OFILES)/ataksh: $(CFILES)/ataksh.c $(CFILES)/logger.c
-	$(CXX) $(CFLAGS) -I$(INCDIR) $^ -o $@
+install:
+	@cd $(BOOTDIR) && $(MAKE)
 
-run: all
-	$(OFILES)/ataksh
-
-.PHONY: clean
+qemu: install
+	qemu-system-x86_64 -drive file=$(BOOTDIR)/disk-x86.img,format=raw -cdrom $(BOOTDIR)/grub.iso -boot order=d -serial stdio
 
 clean:
-	rm -f $(OFILES)/* $(LOGDIR)/ataksh.log
+	@cd $(BOOTDIR) && $(MAKE) clean
 

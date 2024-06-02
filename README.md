@@ -1,20 +1,47 @@
-# ATAK SHELL
-A very simple command-line shell written in C. This project is currently still in development, with the eventual goal
-of making it a not so simple shell. 
+# ATAK Kernel and Shell
+A very simple 64-bit kernel and command-line shell written in C. This project is currently still in development, with the eventual goal of making it a not so simple shell.
 
-Currently, only executable commands found in `/usr/bin` can be executed, assuming the system call `execvp` can handle them (e.g. `ls`, `cat`, `df`, `man`, `diff` etc.).
+# Status
+The kernel is currently able to boot from grub with the help of [BOOTBOOT](https://gitlab.com/bztsrc/bootboot). Upon booting, the kernel will greet you with a message. I am in the processes of creating a standard libary similar to libc, which will allow me to properly integrate the shell.
 
-# Future plans
-I plan to make this a fully functioning shell completly written in C, for the purpose of learning. In which I hope to include the use of tab completion, history regex, more commands (e.g `cd`, `fg`, `&` etc), user login/logout, separating ATAK from the current shell it runs on top of (i.e. bash/zsh) using a simple kernel (check out the `kernel` branch for more info), and much more!
+See the [BOOTBOOT protocal](https://gitlab.com/bztsrc/bootboot/-/blob/master/bootboot_spec_1st_ed.pdf?ref_type=heads) for more info about the boot process.
 
-# Compilation
-To compile the project:
+# Dependancies
+  - GRUB (For running grub-mkrescue)
+  - Xorriso (.iso creation engine)
+  - qemu (with x86 support)
+  - GNU make
+
+# Install
+## Cross Compiler
+First you need to build and install the cross compiler for x86
+### Binutils
 ```
-make all
+cd cross/build-binutils
+. ./build-binutils.sh
 ```
 
-To start the ATAK shell:
+### GCC
 ```
-make run
+cd cross/build-gcc
+. ./build-gcc.sh
+```
+
+## Booting
+You install and boot by running this from the root directory:
+```
+make
+```
+
+You can also install and boot one by one, like this:
+```
+make install
+make qemu
+```
+
+# Clean
+From the root directory run
+```
+make clean
 ```
 
