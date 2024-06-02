@@ -1,0 +1,5 @@
+// BOOTBOOT Config
+
+screen=800x600
+kernel=atak/kernel
+

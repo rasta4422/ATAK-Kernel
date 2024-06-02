@@ -1,11 +1,32 @@
 # Object files
-*.o
+**/*.o
 
 # ISO files
-*.iso
+**/grub.iso
 
-# Executable binaries
-**/atak_kernel
+# disk image
+**/*.img
 
-# QEMU hard disk image
-**/atak_img
+# ELF files
+**/*.elf
+
+# binaries
+**/*.bin
+
+
+# CROSS COMPILER
+cross/*
+
+# binutils
+!cross/build-binutils
+cross/build-binutils/*
+!cross/build-binutils/build-binutils.sh
+
+# gcc
+!cross/build-gcc
+cross/build-gcc/*
+!cross/build-gcc/build-gcc.sh
+
+# tarballs
+!cross/gcc-14.1.0.tar.xz
+!cross/binutils-2.42.tar.xz

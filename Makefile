@@ -1,23 +1,18 @@
-RM:=rm -rf
-MKDIR:=mkdir -p
+OVMF        :=  /usr/share/qemu/bios-TianoCoreEFI.bin
 
-.PHONY: clean all qemu
+ARCHDIR		:= arch/x86
+BOOTDIR		:= $(ARCHDIR)/boot
 
-all:
-	@set -e
-	. ./config.sh
-	$(MKDIR) iso/boot/grub
-	cp atakroot/boot/atak_kernel.bin iso/boot/atak_kernel.bin
-	cat > iso/boot/grub/grub.cfg << EOF
-	menuentry "myos" {
-		multiboot /boot/atak_kernel.bin
-	}
-	grub-mkrescue -o atak_kernel.iso iso
+export PATH := $(HOME)/opt/cross/bin:$(PATH)
 
-qemu:
-	qemu-system-i786 -cdrom atak_kernel.iso -boot menu=on
+all: qemu
+
+install:
+	@cd $(BOOTDIR) && $(MAKE)
+
+qemu: install
+	qemu-system-x86_64 -drive file=$(BOOTDIR)/disk-x86.img,format=raw -cdrom $(BOOTDIR)/grub.iso -boot order=d -serial stdio
 
 clean:
-	$(RM) atakroot
-	$(RM) iso
-	$(RM) atak_kernel.iso 
+	@cd $(BOOTDIR) && $(MAKE) clean
+

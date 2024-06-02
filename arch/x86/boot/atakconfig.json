@@ -1,0 +1,8 @@
+{
+    "disksize": 128,
+    "config": "./config",
+    "initrd": { "type": "tar", "gzip": true, "directory": "initrd" },
+    "partitions": [
+        { "type": "boot", "size": 16 },
+    ]
+}
