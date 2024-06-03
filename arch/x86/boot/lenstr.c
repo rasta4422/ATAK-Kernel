@@ -1,4 +1,4 @@
-#include <string.h>
+#include <strings.h>
 
 unsigned int lenstr(const char *s) {
     unsigned int len = 0;

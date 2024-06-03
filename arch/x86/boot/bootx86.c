@@ -17,8 +17,9 @@ void kernel_main();
 /* entry point for kernel main call */
 void _start()
 {
-    int x, y, s=bootboot.fb_scanline, w=bootboot.fb_width, h=bootboot.fb_height;
-
+    /* int x, y, s=bootboot.fb_scanline, w=bootboot.fb_width, h=bootboot.fb_height; */
+    
+    int s=bootboot.fb_scanline;
     if(s) {
         kernel_main();
     }
