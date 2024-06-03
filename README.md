@@ -4,7 +4,7 @@ A very simple 64-bit kernel and command-line shell written in C. This project is
 # Status
 The kernel is currently able to boot from grub with the help of [BOOTBOOT](https://gitlab.com/bztsrc/bootboot). Upon booting, the kernel will greet you with a message. I am in the processes of creating a standard libary similar to libc, which will allow me to properly integrate the shell.
 
-See the [BOOTBOOT protocal](https://gitlab.com/bztsrc/bootboot/-/blob/master/bootboot_spec_1st_ed.pdf?ref_type=heads) for more info about the boot process.
+See the [BOOTBOOT protocol](https://gitlab.com/bztsrc/bootboot/-/blob/master/bootboot_spec_1st_ed.pdf?ref_type=heads) for more info about the boot process.
 
 # Dependancies
   - GRUB (For running grub-mkrescue)
@@ -39,7 +39,7 @@ make install
 make qemu
 ```
 
-# Clean
+# Cleaning
 From the root directory run
 ```
 make clean
