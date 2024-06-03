@@ -18,13 +18,13 @@ First you need to build and install the cross compiler for x86
 ### Binutils
 ```
 cd cross/build-binutils
-. ./build-binutils.sh
+./build-binutils.sh
 ```
 
 ### GCC
 ```
 cd cross/build-gcc
-. ./build-gcc.sh
+./build-gcc.sh
 ```
 
 ## Booting
