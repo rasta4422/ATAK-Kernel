@@ -1,7 +1,7 @@
-OVMF			:=  /usr/share/qemu/bios-TianoCoreEFI.bin
+OVMF		:=  /usr/share/qemu/bios-TianoCoreEFI.bin
 
-ARCHDIR			:= arch/x86
-BOOTDIR			:= $(ARCHDIR)/boot
+ARCHDIR		:= arch/x86
+BOOTDIR		:= $(ARCHDIR)/boot
 
 export PATH 	:= $(HOME)/opt/cross/bin:$(PATH)
 
