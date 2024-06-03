@@ -27,7 +27,7 @@ typedef unsigned short int  uint16_t;
 typedef unsigned int        uint32_t;
 typedef unsigned long int   uint64_t;
 
-void puts(char *s);
+unsigned int puts(char *s);
 
 void kernel_main();
 #endif
